@@ -6,7 +6,7 @@ import NewsLetter from "@/components/NewsLetter";
 import {client} from "@/sanityLib/sanityClient";
 
 
-export const getProducts = async () => {
+const getProducts = async () => {
   const res = await client.fetch(`*[_type == 'product'] | order(_createdAt asc) [0...3] {
     title,
     slug,
@@ -16,6 +16,8 @@ export const getProducts = async () => {
   }`);
   return res;
 }
+
+export default getProducts;
 
 interface IProduct {
   title: string,
